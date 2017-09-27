@@ -1,6 +1,6 @@
 {
-  "name": "Preact PWA",
-  "short_name": "Preact PWA",
+  "name": "Browse Projects",
+  "short_name": "Browse Projects",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
