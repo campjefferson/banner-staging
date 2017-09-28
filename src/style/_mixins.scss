@@ -1,0 +1,21 @@
+@mixin main {
+}
+
+@mixin container {
+  padding: 58px 0px 24px;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+@mixin flex-list {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+  height: 70px;
+}

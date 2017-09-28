@@ -1,4 +1,6 @@
 import { h, Component } from "preact";
+
+// components
 import { Button, IconButton } from "react-toolbox/lib/button";
 import {
   Card,
@@ -9,8 +11,17 @@ import {
 } from "react-toolbox/lib/card";
 import { List, ListItem } from "react-toolbox/lib/list";
 import Dropdown from "react-toolbox/lib/dropdown";
-import dateformat from "dateformat";
 
+// utility
+import dateformat from "dateformat";
+import {
+  nameSortAsc,
+  nameSortDesc,
+  dateSortAsc,
+  dateSortDesc
+} from "../../utils/sort";
+
+// style
 import style from "./style";
 
 const sortBy = [
@@ -33,16 +44,21 @@ const ListHeader = ({ nameDir, dateDir, onNameClick, onDateClick }) => (
   <div class={style.listHeader}>
     <Button
       flat
+      ripple={false}
+      style={style.listHeaderButton}
       onClick={onNameClick}
       label="Name"
       icon={`${nameDir === 1 ? "keyboard_arrow_down" : "keyboard_arrow_up"}`}
     />
     <Button
       flat
+      ripple={false}
+      style={style.listHeaderButton}
       onClick={onDateClick}
       label="Live Date"
       icon={`${dateDir === 1 ? "keyboard_arrow_down" : "keyboard_arrow_up"}`}
     />
+    <span />
   </div>
 );
 
@@ -54,10 +70,6 @@ export default class Home extends Component {
       nameDir: 1,
       dateDir: 1
     };
-    this.nameSortDesc = this.nameSortDesc.bind(this);
-    this.dateSortDesc = this.dateSortDesc.bind(this);
-    this.nameSortAsc = this.nameSortAsc.bind(this);
-    this.dateSortAsc = this.dateSortAsc.bind(this);
   }
 
   handleChange = sortValue => {
@@ -68,12 +80,13 @@ export default class Home extends Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return;
-    nextProps.displayType !== this.props.displayType ||
+    return (
+      nextProps.displayType !== this.props.displayType ||
       nextProps.searchTerm !== this.props.searchTerm ||
       nextState.sortValue !== this.state.sortValue ||
       nextState.nameDir !== this.state.nameDir ||
-      nextState.dateDir !== this.state.dateDir;
+      nextState.dateDir !== this.state.dateDir
+    );
   }
 
   toggleNameDir() {
@@ -126,6 +139,7 @@ export default class Home extends Component {
     return (
       <List>
         <ListItem
+          ripple={false}
           className={style.listItem}
           itemContent={
             <ListHeader
@@ -140,53 +154,14 @@ export default class Home extends Component {
           const { title, image, date } = project;
           return (
             <ListItem
-              className={style.listItem}
+              ripple={false}
+              className={style.listItemProject}
               itemContent={<ListItemContent title={title} date={date} />}
             />
           );
         })}
       </List>
     );
-  }
-
-  nameSortDesc(a, b) {
-    if (a.title.toLowerCase() < b.title.toLowerCase()) {
-      return -1;
-    }
-    if (a.title.toLowerCase() > b.title.toLowerCase()) {
-      return 1;
-    }
-    return 0;
-  }
-
-  nameSortAsc(a, b) {
-    if (a.title.toLowerCase() < b.title.toLowerCase()) {
-      return 1;
-    }
-    if (a.title.toLowerCase() > b.title.toLowerCase()) {
-      return -1;
-    }
-    return 0;
-  }
-
-  dateSortDesc(a, b) {
-    if (a.date < b.date) {
-      return 1;
-    }
-    if (a.date > b.date) {
-      return -1;
-    }
-    return 0;
-  }
-
-  dateSortAsc(a, b) {
-    if (a.date < b.date) {
-      return -1;
-    }
-    if (a.date > b.date) {
-      return 1;
-    }
-    return 0;
   }
 
   getSortedProjects(
@@ -208,8 +183,8 @@ export default class Home extends Component {
     }
     const result = projects.sort(
       sortValue === "date"
-        ? dateDir === 1 ? this.dateSortDesc : this.dateSortAsc
-        : nameDir === 1 ? this.nameSortDesc : this.nameSortAsc
+        ? dateDir === 1 ? dateSortDesc : dateSortAsc
+        : nameDir === 1 ? nameSortDesc : nameSortAsc
     );
     return result;
   }
@@ -247,8 +222,10 @@ export default class Home extends Component {
             />
           </div>
         </div>
-        <h1 style={{ marginLeft: `24px` }}>Projects</h1>
-        {this.renderProjects(projects)}
+        <section class={style.projectsContainer}>
+          <h1 style={{ marginLeft: `24px` }}>Projects</h1>
+          {this.renderProjects(projects)}
+        </section>
       </div>
     );
   }

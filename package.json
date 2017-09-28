@@ -1,13 +1,15 @@
 {
   "name": "banner-staging",
   "version": "1.0.0",
-  "description": "A banner staging boilerplate project, to house all banners for a specific client",
+  "description":
+    "A banner staging boilerplate project, to house all banners for a specific client",
   "main": "index.js",
   "scripts": {
     "test": "eslint src && preact test",
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build",
     "serve": "preact build && preact serve",
+    "production": "npm run fetch && preact build",
     "dev": "preact watch"
   },
   "keywords": [],
@@ -34,5 +36,6 @@
     "preact-router": "^2.5.7",
     "react-toolbox": "^2.0.0-beta.12",
     "save-dev": "^2.0.0"
-  }
+  },
+  "config": {}
 }

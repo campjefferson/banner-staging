@@ -12,7 +12,7 @@ export default class Header extends Component {
     return (
       <IconButton
         class={style.icon}
-        icon={displayType === "cards" ? "view_list" : "grid_on"}
+        icon={displayType === "cards" ? "view_list" : "view_module"}
         flat
         onClick={this.props.toggleDisplayType}
       />

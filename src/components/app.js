@@ -1,112 +1,19 @@
 import { h, Component } from "preact";
 import { Router } from "preact-router";
-
 import Header from "./header";
 import Home from "../routes/home";
 import Viewer from "../routes/view";
 import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
 
 // remove for production
-import faker from "faker";
-const projectsData = [
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  },
-  {
-    title: faker.company.companyName(),
-    image: "https://placeimg.com/400/245/any",
-    date: faker.date.past()
-  }
-];
-
+import projectsData from "../data/fakeProjectsData";
+import style from "../style";
 export default class App extends Component {
   state = {
     searchTerm: null,
     drawerActive: false,
     displayType: "list",
-    projects: this.getFilteredProjects()
+    projects: projectsData
   };
 
   /** Gets fired when the route changes.
@@ -117,11 +24,13 @@ export default class App extends Component {
     this.currentUrl = e.url;
   };
 
+  /** Gets fired when the search term.
+	 *	@param {string} searchTerm the new search term
+	 */
   handleSearchTermChange = searchTerm => {
     this.setState({
       ...this.state,
-      searchTerm,
-      projects: this.getFilteredProjects(searchTerm)
+      searchTerm
     });
   };
 
@@ -141,15 +50,16 @@ export default class App extends Component {
     return projects;
   }
 
-  toggleDisplayType() {
+  toggleDisplayType = () => {
     this.setState({
       ...this.state,
       displayType: this.state.displayType === "cards" ? "list" : "cards"
     });
-  }
+  };
 
   render(props, state) {
-    const { displayType, searchTerm, projects } = state;
+    const { displayType, searchTerm } = state;
+    const projects = this.getFilteredProjects(searchTerm);
     return (
       <Layout id="app">
         <NavDrawer
@@ -158,14 +68,14 @@ export default class App extends Component {
         >
           <p>Navigation, account switcher, etc. go here.</p>
         </NavDrawer>
-        <Panel style={{ paddingTop: `56px` }}>
+        <Panel>
           <Header
-            handleSearchTermChange={this.handleSearchTermChange.bind(this)}
+            handleSearchTermChange={this.handleSearchTermChange}
             searchTerm={searchTerm}
             displayType={displayType}
-            toggleDisplayType={this.toggleDisplayType.bind(this)}
+            toggleDisplayType={this.toggleDisplayType}
           />
-          <main>
+          <main class={style.main}>
             <Router onChange={this.handleRoute}>
               <Home
                 path="/"
@@ -175,7 +85,7 @@ export default class App extends Component {
               />
               <Viewer
                 path="/:project"
-                toggleDrawerActive={this.toggleDrawerActive.bind(this)}
+                toggleDrawerActive={this.toggleDrawerActive}
               />
             </Router>
           </main>
