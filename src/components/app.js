@@ -6,7 +6,8 @@ import Viewer from "../routes/view";
 import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
 
 // remove for production
-import projectsData from "../data/fakeProjectsData";
+//import projectsData from "../data/fakeProjectsData";
+import projectsData from "../data/projects/projects.json";
 import style from "../style";
 export default class App extends Component {
   state = {

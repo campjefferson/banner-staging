@@ -58,20 +58,17 @@
 
 .cardTitle {
   background: white;
-  min-height: 2.5em;
+
   h5 {
+    min-height: 2.5em;
     font-weight: 700 !important;
   }
 }
-/*
+
 .cardMedia {
-  max-width: calc(100% - 28px);
-  margin-left: 14px;
-  margin-top: 14px;
-  border: 8px solid white;
-  border-bottom: none;
+  background-position: center -1px;
+  background-size: calc(100% + 2px) auto;
 }
-*/
 
 .cardDownload {
   position: absolute;

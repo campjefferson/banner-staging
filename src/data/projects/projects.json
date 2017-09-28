@@ -1,0 +1,157 @@
+[
+  {
+    "url":
+      "http://media.campjefferson.ca/clients/koodo/junesale-wontlast-50-bonus/",
+    "slug": "junesale_wontlast_50_bonus",
+    "title": "JuneSale WontLast 50 Bonus",
+    "date": "2017-10-01T00:00:00.000Z",
+    "banners": {
+      "english": {
+        "300x250": {
+          "width": "300",
+          "height": "250",
+          "file": "JuneSale-WontLast-50-Bonus_300x250_EN"
+        },
+        "300x250_cta": {
+          "width": "300",
+          "height": "250",
+          "file": "JuneSale-WontLast-50-Bonus-CTA_300x250_EN"
+        },
+        "728x90": {
+          "width": "728",
+          "height": "90",
+          "file": "JuneSale-WontLast-50-Bonus_728x90_EN"
+        },
+        "300x600": {
+          "width": "300",
+          "height": "600",
+          "file": "JuneSale-WontLast-50-Bonus_300x600_EN"
+        },
+        "970x250": {
+          "width": "970",
+          "height": "250",
+          "file": "JuneSale-WontLast-50-Bonus_970x250_EN"
+        },
+        "300x50": {
+          "width": "300",
+          "height": "50",
+          "file": "JuneSale-WontLast-50-Bonus_300x50_EN"
+        },
+        "320x50": {
+          "width": "320",
+          "height": "50",
+          "file": "JuneSale-WontLast-50-Bonus_320x50_EN"
+        },
+        "320x480": {
+          "width": "320",
+          "height": "480",
+          "file": "JuneSale-WontLast-50-Bonus_320x480_EN"
+        },
+        "320x100": {
+          "width": "320",
+          "height": "100",
+          "file": "JuneSale-WontLast-50-Bonus_320x100_EN"
+        }
+      },
+      "french": {
+        "300x250": {
+          "width": "300",
+          "height": "250",
+          "file": "JuneSale-WontLast-50-Bonus_300x250_FR"
+        },
+        "300x250_cta": {
+          "width": "300",
+          "height": "250",
+          "file": "JuneSale-WontLast-50-Bonus-CTA_300x250_FR"
+        },
+        "728x90": {
+          "width": "728",
+          "height": "90",
+          "file": "JuneSale-WontLast-50-Bonus_728x90_FR"
+        },
+        "300x600": {
+          "width": "300",
+          "height": "600",
+          "file": "JuneSale-WontLast-50-Bonus_300x600_FR"
+        },
+        "970x250": {
+          "width": "970",
+          "height": "250",
+          "file": "JuneSale-WontLast-50-Bonus_970x250_FR"
+        },
+        "300x50": {
+          "width": "300",
+          "height": "50",
+          "file": "JuneSale-WontLast-50-Bonus_300x50_FR"
+        },
+        "320x50": {
+          "width": "320",
+          "height": "50",
+          "file": "JuneSale-WontLast-50-Bonus_320x50_FR"
+        },
+        "320x480": {
+          "width": "320",
+          "height": "480",
+          "file": "JuneSale-WontLast-50-Bonus_320x480_FR"
+        },
+        "320x100": {
+          "width": "320",
+          "height": "100",
+          "file": "JuneSale-WontLast-50-Bonus_320x100_FR"
+        }
+      }
+    }
+  },
+  {
+    "url": "http://media.campjefferson.ca/clients/koodo/roi-sfd-generic/",
+    "slug": "roi_sfd_generic",
+    "title": "ROI SFD Generic",
+    "date": "2017-10-01T00:00:00.000Z",
+    "banners": {
+      "english": {
+        "300x250": {
+          "width": "300",
+          "height": "250",
+          "file": "ROI-SFD-Generic_300x250_EN"
+        },
+        "300x600": {
+          "width": "300",
+          "height": "600",
+          "file": "ROI-SFD-Generic_300x600_EN"
+        },
+        "160x600": {
+          "width": "160",
+          "height": "600",
+          "file": "ROI-SFD-Generic_160x600_EN"
+        },
+        "728x90": {
+          "width": "728",
+          "height": "90",
+          "file": "ROI-SFD-Generic_728x90_EN"
+        }
+      },
+      "french": {
+        "300x250": {
+          "width": "300",
+          "height": "250",
+          "file": "ROI-SFD-Generic_300x250_FR"
+        },
+        "300x600": {
+          "width": "300",
+          "height": "600",
+          "file": "ROI-SFD-Generic_300x600_FR"
+        },
+        "160x600": {
+          "width": "160",
+          "height": "600",
+          "file": "ROI-SFD-Generic_160x600_FR"
+        },
+        "728x90": {
+          "width": "728",
+          "height": "90",
+          "file": "ROI-SFD-Generic_728x90_FR"
+        }
+      }
+    }
+  }
+]
