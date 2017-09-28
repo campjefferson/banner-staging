@@ -1,7 +1,7 @@
 {
   "name": "banner-staging",
   "version": "1.0.0",
-  "description": "",
+  "description": "A banner staging boilerplate project, to house all banners for a specific client",
   "main": "index.js",
   "scripts": {
     "test": "eslint src && preact test",
@@ -27,9 +27,12 @@
     "sass-loader": "^6.0.6"
   },
   "dependencies": {
+    "dateformat": "^3.0.2",
+    "faker": "^4.1.0",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "preact-router": "^2.5.7",
-    "react-toolbox": "^2.0.0-beta.12"
+    "react-toolbox": "^2.0.0-beta.12",
+    "save-dev": "^2.0.0"
   }
 }

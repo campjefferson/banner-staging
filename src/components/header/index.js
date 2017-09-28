@@ -1,18 +1,39 @@
-import { h, Component } from 'preact';
-import { Link } from 'preact-router/match';
-import style from './style';
+import { h, Component } from "preact";
+import AppBar from "react-toolbox/lib/app_bar";
+import Navigation from "react-toolbox/lib/navigation";
+import Input from "react-toolbox/lib/input";
+import { IconButton } from "react-toolbox/lib/button";
+
+import style from "./style";
+import KoodoLogo from "../../assets/img/svg/koodo";
 
 export default class Header extends Component {
-	render() {
-		return (
-			<header class={style.header}>
-				<h1>Client Logo</h1>
-				<nav>
-					<Link activeClassName={style.active} href="/">Home</Link>
-					<Link activeClassName={style.active} href="/profile">Me</Link>
-					<Link activeClassName={style.active} href="/profile/john">John</Link>
-				</nav>
-			</header>
-		);
-	}
+  renderSortToggleButton(displayType) {
+    return (
+      <IconButton
+        class={style.icon}
+        icon={displayType === "cards" ? "view_list" : "grid_on"}
+        flat
+        onClick={this.props.toggleDisplayType}
+      />
+    );
+  }
+  render(props) {
+    const { searchTerm, displayType } = props;
+    return (
+      <AppBar title="" class={style.appBar} leftIcon={<KoodoLogo />}>
+        <Navigation type="horizontal">
+          <Input
+            type="text"
+            class={style.search}
+            value={searchTerm}
+            onChange={this.props.handleSearchTermChange}
+            placeholder="Search projects"
+          />
+          <IconButton class={style.icon} icon="search" flat disabled />
+          {this.renderSortToggleButton(displayType)}
+        </Navigation>
+      </AppBar>
+    );
+  }
 }
