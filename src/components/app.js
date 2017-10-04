@@ -1,6 +1,7 @@
 import { h, Component } from "preact";
 import { Router } from "preact-router";
 import Header from "./header";
+import Footer from "./footer";
 import Home from "../routes/home";
 import Viewer from "../routes/view";
 import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
@@ -90,6 +91,7 @@ export default class App extends Component {
               />
             </Router>
           </main>
+          <Footer></Footer>
         </Panel>
       </Layout>
     );
