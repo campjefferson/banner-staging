@@ -1,4 +1,5 @@
 @import "../../style/mixins";
+@import "../../style/variables";
 
 .home {
   @include main;
@@ -8,6 +9,11 @@
 
 .projectsContainer {
   @include container;
+
+  h1 {
+    font-family: OratorStd;
+    text-transform: uppercase;
+  }
 }
 
 .sortWrap {
@@ -27,6 +33,14 @@
 
   h4 {
     margin-right: 10px;
+    font-family: OratorStd;
+    text-transform: uppercase;
+  }
+
+  input,
+  ul,
+  li {
+    font-family: TradeGothicStd;
   }
 }
 
@@ -43,11 +57,12 @@
 .card {
   flex: 1;
   background: #f2f2f2;
-  width: calc(20% - 28px);
+  width: calc(25% - 28px);
   max-width: none;
   flex-basis: auto;
   flex: none;
   margin: 0 14px 28px;
+  font-family: TradeGothicStd;
 }
 
 .cardActions {
@@ -86,9 +101,20 @@
 .listItemProject {
   background: white;
   margin-bottom: 4px;
+  transition: .25s;
+
+  &:hover {
+    background-color: $cj-blue;
+
+    .listItemContent,
+    .listItemIcon > span {
+      color: white;
+    }
+  }
 }
 
 .listItemContent {
+  transition: .25s;
   @include flex-list;
 
   h3,
@@ -100,6 +126,7 @@
     flex-basis: auto;
     flex: 1;
     margin: 0;
+    font-family: TradeGothicStd;
   }
 }
 
@@ -113,11 +140,18 @@
 .listHeader {
   @include flex-list;
   button {
+    font-family: OratorStd;
+    text-transform: uppercase;
     padding-left: 0;
     width: 50.6%;
     text-align: left;
+
     span {
-      float: left;
+      color: $cj-pink;
+      margin-left: 4px;
+      font-size: 16px;
+      position: relative;
+      top: -1px;
     }
   }
   button,

@@ -2,6 +2,7 @@ import { h, Component } from "preact";
 
 // components
 import { Button, IconButton } from "react-toolbox/lib/button";
+import { FontIcon } from "react-toolbox/lib/font_icon";
 import {
   Card,
   CardMedia,
@@ -46,18 +47,18 @@ const ListHeader = ({ nameDir, dateDir, onNameClick, onDateClick }) => (
       flat
       ripple={false}
       style={style.listHeaderButton}
-      onClick={onNameClick}
-      label="Name"
-      icon={`${nameDir === 1 ? "keyboard_arrow_down" : "keyboard_arrow_up"}`}
-    />
+      onClick={onNameClick}>
+      Name
+      <FontIcon value={`${nameDir === 1 ? "arrow_downward" : "arrow_upward"}`} />
+    </Button>
     <Button
-      flat
-      ripple={false}
-      style={style.listHeaderButton}
-      onClick={onDateClick}
-      label="Live Date"
-      icon={`${dateDir === 1 ? "keyboard_arrow_down" : "keyboard_arrow_up"}`}
-    />
+    flat
+    ripple={false}
+    style={style.listHeaderButton}
+    onClick={onNameClick}>
+      Live Date
+      <FontIcon value={`${nameDir === 1 ? "arrow_downward" : "arrow_upward"}`} />
+    </Button>
     <span />
   </div>
 );
