@@ -49,8 +49,15 @@ body {
 #app {
   height: 100%;
   padding-top: 155px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 main {
   padding-top: 155px;
+  flex: 1;
 }
