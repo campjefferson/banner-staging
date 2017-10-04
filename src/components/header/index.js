@@ -22,7 +22,7 @@ export default class Header extends Component {
     const { searchTerm, displayType } = props;
     return (
       <AppBar title="" class={style.appBar} leftIcon={<KoodoLogo />}>
-        <Navigation type="horizontal">
+        <Navigation type="horizontal" class={style.nav}>
           <Input
             type="text"
             class={style.search}

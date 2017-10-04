@@ -26,6 +26,11 @@
   }
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+}
+
 .icon {
   span {
     font-size: 28px !important;
@@ -41,5 +46,7 @@
     font-family: OratorStd;
     border: 0;
     background-color: #f2f2f2;
+    padding: 16px;
+    text-transform: uppercase;
   }
 }
