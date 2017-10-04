@@ -46,6 +46,11 @@
   input {
     border: 0;
   }
+
+  .selected {
+    color: $cj-pink;
+  }
+  
 }
 
 .cardsWrap {

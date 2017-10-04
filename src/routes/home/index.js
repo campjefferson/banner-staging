@@ -221,6 +221,7 @@ export default class Home extends Component {
               source={sortBy}
               onChange={this.handleChange}
               value={sortValue}
+              class={style.Dropdown}
             />
           </div>
         </div>
