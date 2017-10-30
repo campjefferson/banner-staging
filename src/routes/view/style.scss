@@ -1,5 +1,62 @@
+@import "../../style/mixins";
+
 .view {
-  padding: 56px 20px;
+  @include main;
   min-height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.subnav {
+  @include subnav;
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    font-family: OratorStd;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 16px 0;
+  }
+}
+
+.liveDate {
+  display: flex;
+  align-items: center;
+
+  .title {
+    font-family: TradeGothicStd;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  .date {
+    font-family: TradeGothicStd;
+    font-size: 16px;
+    margin-left: 8px;
+  }
+}
+
+.body {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.infoBar {
+  padding: 8px 16px;
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menuButton {
+  position: absolute;
+  left: 0;
 }

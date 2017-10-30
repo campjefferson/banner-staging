@@ -19,3 +19,12 @@
   margin-left: 10px;
   height: 70px;
 }
+
+@mixin subnav {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  padding-left: 28px;
+  padding-right: 28px;
+}
