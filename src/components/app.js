@@ -9,7 +9,7 @@ import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
 // remove for production
 //import projectsData from "../data/fakeProjectsData";
 import projectsData from "../data/projects/projects.json";
-import style from "../style";
+import style from "./style";
 export default class App extends Component {
   state = {
     searchTerm: null,
@@ -67,8 +67,14 @@ export default class App extends Component {
         <NavDrawer
           active={this.state.drawerActive}
           onOverlayClick={this.toggleDrawerActive}
+          className={style.menu}
         >
-          <p>Navigation, account switcher, etc. go here.</p>
+          <h3>EN</h3>
+          <ul>
+            <li><a href="#" class={style.isActive}>300x250</a></li>
+            <li><a href="#">160x600</a></li>
+            <li><a href="#">728x90</a></li>
+          </ul>
         </NavDrawer>
         <Panel>
           <Header

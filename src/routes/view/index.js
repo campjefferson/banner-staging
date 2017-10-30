@@ -29,7 +29,7 @@ export default class Viewer extends Component {
           </div>
         </div>
         <div class={style.body}>
-          <Button label="menu" onClick={toggleDrawerActive} class={style.menuButton} />
+          <IconButton icon="content_copy" flat onClick={toggleDrawerActive} class={style.menuButton} />
           <iframe style="width:300px;height:250px;border:1px solid black;" />
         </div>
         <InfoBar />
