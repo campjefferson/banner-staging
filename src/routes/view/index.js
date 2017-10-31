@@ -15,8 +15,36 @@ export default class Viewer extends Component {
   // gets called when this route is navigated to
   componentDidMount() {}
 
-  // Note: `user` comes from the URL, courtesy of our router
-  render({ project, toggleDrawerActive }) {
+  getCurrentBannerUrl() {
+    const { currentProject, currentBanner } = this.props;
+    if (!currentProject || !currentBanner) {
+      return "";
+    }
+    let baseUrl = currentProject.url;
+    let bannerUrl = `${baseUrl}${currentBanner.file}`;
+    return bannerUrl;
+  }
+
+  renderIframe() {
+    let { currentBanner } = this.props;
+    if (!currentBanner) {
+      return <div class={style.defaultIframe} />;
+    } else {
+      return (
+        <iframe
+          id="frame"
+          frameBorder="0"
+          scrolling="no"
+          class={style.iframe}
+          width={`${currentBanner ? currentBanner.width : 300}`}
+          height={`${currentBanner ? currentBanner.height : 250}`}
+          src={this.getCurrentBannerUrl()}
+        />
+      );
+    }
+  }
+
+  render({ project, toggleDrawerActive, currentBanner }) {
     return (
       <div class={style.view}>
         <div class={style.subnav}>
@@ -29,8 +57,13 @@ export default class Viewer extends Component {
           </div>
         </div>
         <div class={style.body}>
-          <IconButton icon="content_copy" flat onClick={toggleDrawerActive} class={style.menuButton} />
-          <iframe style="width:300px;height:250px;border:1px solid black;" />
+          <IconButton
+            icon="content_copy"
+            flat
+            onClick={toggleDrawerActive}
+            class={style.menuButton}
+          />
+          {this.renderIframe()}
         </div>
         <InfoBar />
       </div>

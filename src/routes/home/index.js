@@ -2,6 +2,7 @@ import { h, Component } from "preact";
 
 // components
 import { Button, IconButton } from "react-toolbox/lib/button";
+import { Link } from "preact-router";
 import { FontIcon } from "react-toolbox/lib/font_icon";
 import {
   Card,
@@ -47,17 +48,23 @@ const ListHeader = ({ nameDir, dateDir, onNameClick, onDateClick }) => (
       flat
       ripple={false}
       style={style.listHeaderButton}
-      onClick={onNameClick}>
+      onClick={onNameClick}
+    >
       Name
-      <FontIcon value={`${nameDir === 1 ? "arrow_downward" : "arrow_upward"}`} />
+      <FontIcon
+        value={`${nameDir === 1 ? "arrow_downward" : "arrow_upward"}`}
+      />
     </Button>
     <Button
-    flat
-    ripple={false}
-    style={style.listHeaderButton}
-    onClick={onNameClick}>
+      flat
+      ripple={false}
+      style={style.listHeaderButton}
+      onClick={onNameClick}
+    >
       Live Date
-      <FontIcon value={`${nameDir === 1 ? "arrow_downward" : "arrow_upward"}`} />
+      <FontIcon
+        value={`${nameDir === 1 ? "arrow_downward" : "arrow_upward"}`}
+      />
     </Button>
     <span />
   </div>
@@ -115,13 +122,15 @@ export default class Home extends Component {
           const { title, slug, date } = project;
           const thumbnail = `../../data/projects/${slug}/thumbnail.png`;
           return (
-            <Card className={style.card}>
+            <Card className={style.card} to={`/${slug}`}>
               <CardMedia
                 aspectRatio="wide"
                 className={style.cardMedia}
                 image={thumbnail}
               />
-              <CardTitle title={title} className={style.cardTitle} />
+              <Link class={style.link} href={`/${slug}`} title={`${title}`}>
+                <CardTitle title={title} className={style.cardTitle} />
+              </Link>
               <CardActions className={style.cardActions}>
                 <CardText>{dateformat(date, "mmmm dS, yyyy")}</CardText>
                 <IconButton
@@ -153,11 +162,12 @@ export default class Home extends Component {
           }
         />
         {projects.map(project => {
-          const { title, image, date } = project;
+          const { title, slug, image, date } = project;
           return (
             <ListItem
               ripple={false}
               className={style.listItemProject}
+              to={`/${slug}`}
               itemContent={<ListItemContent title={title} date={date} />}
             />
           );

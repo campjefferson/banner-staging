@@ -2,6 +2,7 @@ import { h, Component } from "preact";
 import { Router } from "preact-router";
 import Header from "./header";
 import Footer from "./footer";
+import CampaignListing from "./campaignlisting";
 import Home from "../routes/home";
 import Viewer from "../routes/view";
 import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
@@ -15,7 +16,10 @@ export default class App extends Component {
     searchTerm: null,
     drawerActive: false,
     displayType: "list",
-    projects: projectsData
+    projects: projectsData,
+    viewType: "main",
+    currentProject: null,
+    currentBanner: null
   };
 
   /** Gets fired when the route changes.
@@ -24,6 +28,26 @@ export default class App extends Component {
 	 */
   handleRoute = e => {
     this.currentUrl = e.url;
+    const projectUrl = e.url.substr(1);
+
+    let currentProject =
+      projectsData.filter(project => {
+        return project.slug === projectUrl;
+      })[0] || null;
+    let currentBanner = null;
+    if (currentProject !== undefined) {
+      const sets = Object.keys(currentProject.banners);
+      const banners = currentProject.banners[sets[0]];
+      const bannerKeys = Object.keys(banners);
+      currentBanner = banners[bannerKeys[0]];
+    }
+
+    this.setState({
+      ...this.state,
+      currentProject,
+      currentBanner,
+      viewType: e.url === "/" ? "main" : "project"
+    });
   };
 
   /** Gets fired when the search term.
@@ -59,8 +83,21 @@ export default class App extends Component {
     });
   };
 
+  setCurrentBanner(currentBanner) {
+    this.setState({
+      ...this.state,
+      currentBanner
+    });
+  }
+
   render(props, state) {
-    const { displayType, searchTerm } = state;
+    const {
+      displayType,
+      searchTerm,
+      viewType,
+      currentProject,
+      currentBanner
+    } = state;
     const projects = this.getFilteredProjects(searchTerm);
     return (
       <Layout id="app">
@@ -69,18 +106,18 @@ export default class App extends Component {
           onOverlayClick={this.toggleDrawerActive}
           className={style.menu}
         >
-          <h3>EN</h3>
-          <ul>
-            <li><a href="#" class={style.isActive}>300x250</a></li>
-            <li><a href="#">160x600</a></li>
-            <li><a href="#">728x90</a></li>
-          </ul>
+          <CampaignListing
+            project={currentProject}
+            currentBanner={currentBanner}
+            setCurrentBanner={this.setCurrentBanner.bind(this)}
+          />
         </NavDrawer>
         <Panel>
           <Header
             handleSearchTermChange={this.handleSearchTermChange}
             searchTerm={searchTerm}
             displayType={displayType}
+            viewType={viewType}
             toggleDisplayType={this.toggleDisplayType}
           />
           <main class={style.main}>
@@ -94,10 +131,12 @@ export default class App extends Component {
               <Viewer
                 path="/:project"
                 toggleDrawerActive={this.toggleDrawerActive}
+                currentProject={currentProject}
+                currentBanner={currentBanner}
               />
             </Router>
           </main>
-          <Footer></Footer>
+          <Footer />
         </Panel>
       </Layout>
     );
