@@ -35,7 +35,8 @@ export default class App extends Component {
         return project.slug === projectUrl;
       })[0] || null;
     let currentBanner = null;
-    if (currentProject !== undefined) {
+
+    if (currentProject) {
       const sets = Object.keys(currentProject.banners);
       const banners = currentProject.banners[sets[0]];
       const bannerKeys = Object.keys(banners);

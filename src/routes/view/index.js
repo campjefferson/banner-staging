@@ -21,7 +21,7 @@ export default class Viewer extends Component {
       return "";
     }
     let baseUrl = currentProject.url;
-    let bannerUrl = `${baseUrl}${currentBanner.file}`;
+    let bannerUrl = `${baseUrl}${currentBanner.file}/`;
     return bannerUrl;
   }
 
@@ -35,6 +35,7 @@ export default class Viewer extends Component {
           id="frame"
           frameBorder="0"
           scrolling="no"
+          key={currentBanner ? currentBanner.file : "default"}
           class={style.iframe}
           width={`${currentBanner ? currentBanner.width : 300}`}
           height={`${currentBanner ? currentBanner.height : 250}`}
