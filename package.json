@@ -49,6 +49,7 @@
   },
   "config": {
     "campaigns": [
+      "http://media.campjefferson.ca/clients/porsche/996-classic",
       "http://media.campjefferson.ca/clients/koodo/junesale-wontlast-50-bonus",
       "http://media.campjefferson.ca/clients/koodo/roi-sfd-generic"
     ]
