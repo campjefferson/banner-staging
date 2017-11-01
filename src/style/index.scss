@@ -48,7 +48,7 @@ body {
 
 #app {
   height: 100%;
-  padding-top: 155px;
+  padding-top: $app-bar-height;
 
   > div {
     display: flex;
@@ -58,6 +58,6 @@ body {
 }
 
 main {
-  padding-top: 155px;
+  padding-top: $app-bar-height;
   flex: 1;
 }

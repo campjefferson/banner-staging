@@ -87,6 +87,7 @@ export default class App extends Component {
   setCurrentBanner(currentBanner) {
     this.setState({
       ...this.state,
+      drawerActive: false,
       currentBanner
     });
   }

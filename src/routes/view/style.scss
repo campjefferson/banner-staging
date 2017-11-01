@@ -1,9 +1,10 @@
+@import "../../style/variables";
 @import "../../style/mixins";
 
 .view {
   @include main;
   width: 100%;
-  height: calc(100vh - 240px);
+  height: $view-height;
   display: flex;
   flex-direction: column;
 }

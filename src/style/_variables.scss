@@ -1,4 +1,9 @@
 $body-font-colour: #222;
 
+$app-bar-height: 100px;
+$footer-height: 85px;
+$viewport-distance: $app-bar-height + $footer-height;
+$view-height: calc(100vh - #{$viewport-distance});
+
 $cj-pink: #ff286e;
 $cj-blue: #00c8ff;

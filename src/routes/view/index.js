@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 import { Button, IconButton } from "react-toolbox/lib/button";
+import dateformat from "dateformat";
 
 import style from "./style";
 
@@ -15,6 +16,13 @@ export default class Viewer extends Component {
   // gets called when this route is navigated to
   componentDidMount() {}
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.currentProject.slug !== this.props.currentProject.slug ||
+      nextProps.currentBanner.file !== this.props.currentBanner.file
+    );
+  }
+
   getCurrentBannerUrl() {
     const { currentProject, currentBanner } = this.props;
     if (!currentProject || !currentBanner) {
@@ -23,6 +31,20 @@ export default class Viewer extends Component {
     let baseUrl = currentProject.url;
     let bannerUrl = `${baseUrl}${currentBanner.file}/`;
     return bannerUrl;
+  }
+
+  componentDidUpdate() {
+    let { currentBanner } = this.props;
+    if (!currentBanner) {
+      return;
+    }
+    const container = document.getElementById("frame");
+    const frame = `<iframe src="${this.getCurrentBannerUrl()}" width="${currentBanner.width}" height="${currentBanner.height}
+    class="${style.iframe}"
+    frameBorder="0"
+    scrolling="no""/>`;
+
+    container.innerHTML = frame;
   }
 
   renderIframe() {
@@ -45,7 +67,17 @@ export default class Viewer extends Component {
     }
   }
 
-  render({ project, toggleDrawerActive, currentBanner }) {
+  formatDate() {
+    const { currentProject } = this.props;
+    if (!currentProject || !currentProject.date) {
+      return null;
+    }
+    console.log(currentProject);
+    const date = new Date(currentProject.date);
+    return dateformat(date, "mmmm dS, yyyy");
+  }
+
+  render({ project, toggleDrawerActive, currentProject, currentBanner }) {
     return (
       <div class={style.view}>
         <div class={style.subnav}>
@@ -54,7 +86,7 @@ export default class Viewer extends Component {
           </div>
           <div class={style.liveDate}>
             <span class={style.title}>Live date:</span>
-            <span class={style.date}>Oct 31, 2017</span>
+            <span class={style.date}>{this.formatDate()}</span>
           </div>
         </div>
         <div class={style.body}>
