@@ -52,5 +52,9 @@
       "http://media.campjefferson.ca/clients/koodo/junesale-wontlast-50-bonus",
       "http://media.campjefferson.ca/clients/koodo/roi-sfd-generic"
     ]
+  },
+  "performance": {
+    "maxAssetSize": 500000,
+    "maxEntrypointSize": 3500000
   }
 }

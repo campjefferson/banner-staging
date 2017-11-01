@@ -1,5 +1,6 @@
 import { h } from "preact";
 import style from "../style";
+
 const CampaignListing = props => {
   let { project, currentBanner } = props;
   if (!project) {

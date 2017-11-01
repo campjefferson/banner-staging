@@ -18,6 +18,10 @@ export default class Viewer extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      (!this.props.currentProject && nextProps.currentProject) ||
+      (!this.props.currentBanner && nextProps.currentBanner) ||
+      (!this.props.currentProject.slug && nextProps.currentProject.slug) ||
+      (!this.props.currentBanner.file && nextProps.currentBanner.file) ||
       nextProps.currentProject.slug !== this.props.currentProject.slug ||
       nextProps.currentBanner.file !== this.props.currentBanner.file
     );
