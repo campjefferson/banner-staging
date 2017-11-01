@@ -1,14 +1,17 @@
 {
   "name": "banner-staging",
   "version": "1.0.0",
-  "description": "A banner staging boilerplate project, to house all banners for a specific client",
+  "description":
+    "A banner staging boilerplate project, to house all banners for a specific client",
   "main": "index.js",
   "scripts": {
     "test": "eslint src && preact test",
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build",
     "serve": "preact build && preact serve",
-    "production": "npm run fetch && preact build",
+    "production":
+      "cross-env NODE_ENV=production npm run fetch && preact build && npm run copyFiles",
+    "copyFiles": "babel-node copyFiles",
     "fetch": "babel-node fetch",
     "dev": "preact watch"
   },
@@ -23,6 +26,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.1",
     "eslint": "^4.7.2",
     "eslint-config-synacor": "^2.0.0",
     "fs-extra": "^4.0.2",

@@ -29,9 +29,7 @@ function createCampaign(data, url) {
     date: new Date(data.date),
     banners: data.banners
   };
-  if (!fs.existsSync(`./src/data/projects/${slug}`)) {
-    fs.mkdirSync(`./src/data/projects/${slug}`);
-  }
+  fs.ensureDirSync(path.resolve(__dirname, `./src/data/projects/${slug}`));
   json.push(campaignData);
   return campaignData;
 }
@@ -63,11 +61,10 @@ async function fetchThumb(campaign, thumbnailUrl) {
 
 async function fetchAllCampaigns(campaigns) {
   let list = campaigns.slice(0);
+
   while (list.length > 0) {
     const campaignUrl = list.shift();
-    if (!fs.existsSync(`./src/data/projects/`)) {
-      fs.mkdirSync(`./src/data/projects/`);
-    }
+    fs.ensureDirSync(path.resolve(__dirname, `./src/data/projects/`));
     const json = await fetchCampaign(campaignUrl);
     const thumbnail = await fetchThumb(
       campaignUrl,
