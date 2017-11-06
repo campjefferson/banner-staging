@@ -18,7 +18,8 @@ function getSlugifiedName(name) {
 }
 
 function createCampaign(data, url) {
-  const slug = getSlugifiedName(data.name);
+  console.log(data, url);
+  const slug = getSlugifiedName(data.name || url);
   if (url.charAt(url.length - 1) !== "/") {
     url = url + "/";
   }
@@ -26,7 +27,7 @@ function createCampaign(data, url) {
     url,
     slug,
     title: data.name,
-    date: new Date(data.date),
+    date: new Date(data.date || data.lastModified),
     banners: data.banners
   };
   fs.ensureDirSync(path.resolve(__dirname, `./src/data/projects/${slug}`));
@@ -61,6 +62,7 @@ async function fetchThumb(campaign, thumbnailUrl) {
 
 async function fetchAllCampaigns(campaigns) {
   let list = campaigns.slice(0);
+  console.log(list);
 
   while (list.length > 0) {
     const campaignUrl = list.shift();
