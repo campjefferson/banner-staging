@@ -119,14 +119,17 @@ export default class Home extends Component {
     return (
       <section class={style.cardsWrap}>
         {projects.map(project => {
-          const { title, slug, date } = project;
-          const thumbnail = `../../data/projects/${slug}/thumbnail.png`;
+          let { title, slug, date, thumbnail } = project;
+          if (!thumbnail) {
+            thumbnail = "thumbnail.png";
+          }
+          const thumbnailUrl = `../../data/projects/${slug}/${thumbnail}`;
           return (
             <Card className={style.card} to={`/${slug}`}>
               <CardMedia
                 aspectRatio="wide"
                 className={style.cardMedia}
-                image={thumbnail}
+                image={thumbnailUrl}
               />
               <Link class={style.link} href={`/${slug}`} title={`${title}`}>
                 <CardTitle title={title} className={style.cardTitle} />
