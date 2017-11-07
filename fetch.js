@@ -18,14 +18,16 @@ function getSlugifiedName(name) {
 }
 
 function createCampaign(data, url) {
-  console.log(data, url);
   const slug = getSlugifiedName(data.name || url);
   if (url.charAt(url.length - 1) !== "/") {
     url = url + "/";
   }
+  const { thumbnail, zip } = data;
   const campaignData = {
     url,
     slug,
+    thumbnail,
+    zip,
     title: data.name,
     date: new Date(data.date || data.lastModified),
     banners: data.banners
@@ -53,8 +55,8 @@ async function fetchCampaign(campaign) {
   });
 }
 
-async function fetchThumb(campaign, thumbnailUrl) {
-  const url = `${campaign}/thumbnail.png`;
+async function fetchThumb(campaign, thumbnailUrl, thumbUrl) {
+  const url = `${campaign}/${thumbUrl}`;
   await download(url, thumbnailUrl, () => {
     console.log("thumbnail downloaded");
   });
@@ -62,15 +64,16 @@ async function fetchThumb(campaign, thumbnailUrl) {
 
 async function fetchAllCampaigns(campaigns) {
   let list = campaigns.slice(0);
-  console.log(list);
 
   while (list.length > 0) {
     const campaignUrl = list.shift();
     fs.ensureDirSync(path.resolve(__dirname, `./src/data/projects/`));
     const json = await fetchCampaign(campaignUrl);
+    const thumbUrl = json.thumbnail || `thumbnail.png`;
     const thumbnail = await fetchThumb(
       campaignUrl,
-      `./src/data/projects/${json.slug}/thumbnail.png`
+      `./src/data/projects/${json.slug}/${thumbUrl}`,
+      thumbUrl
     );
   }
 
