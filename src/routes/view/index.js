@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 import { Button, IconButton } from "react-toolbox/lib/button";
-import { Menu, MenuItem, IconMenu, MenuDivider} from "react-toolbox/lib/menu";
+import { Menu, IconMenu, MenuItem, MenuDivider} from "react-toolbox/lib/menu";
 import Tooltip from 'react-toolbox/lib/tooltip';
 import dateformat from "dateformat";
 
@@ -8,22 +8,21 @@ import style from "./style";
 
 const TooltipButton = Tooltip(Button);
 
-const DownloadMenu = () => (
-  <IconMenu icon="more_vert" position="bottomRight" flat inverse class={style.icon}>
-    <MenuItem value="download" icon='picture_in_picture' caption="Download Banner" />
-    <MenuItem value="download" icon='image' caption="Download Backup Image" />
-    <MenuDivider />
-    <MenuItem value="download" icon='file_download' caption="Download Project" />
-  </IconMenu>
-);
-
 const InfoBar = () => (
   <div class={style.infoBar}>
-    <IconButton icon="info" tooltip="test" flat inverse class={style.icon} />
+    <IconButton icon="info" flat inverse class={style.icon} />
     <IconButton icon="replay" flat inverse class={style.icon} onClick={() => {
       document.getElementById("frame").src += '';
     }} />
-    <DownloadMenu />
+    <IconButton icon="more_vert" flat inverse class={style.icon} onClick={() => {
+      console.log("open menu");
+    }} />
+    <Menu position="bottomRight" active>
+      <MenuItem icon='picture_in_picture' caption="Download Banner" />
+      <MenuItem icon='image' caption="Download Backup Image" />
+      <MenuDivider />
+      <MenuItem icon='file_download' caption="Download Project" />
+    </Menu>
   </div>
 );
 
