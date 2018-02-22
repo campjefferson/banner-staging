@@ -24,9 +24,8 @@ const CampaignListing = props => {
               }
               const isCurrent = banner.file === currentBanner.file;
               return (
-                <li>
+                <li class={isCurrent ? style.isActive : ""}>
                   <a
-                    class={isCurrent ? style.isActive : ""}
                     href={`#${banner.file}`}
                     onClick={() => {
                       props.setCurrentBanner({

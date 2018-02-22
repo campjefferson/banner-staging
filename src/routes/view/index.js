@@ -1,21 +1,29 @@
 import { h, Component } from "preact";
 import { Button, IconButton } from "react-toolbox/lib/button";
-import { Menu, MenuItem, IconMenu} from "react-toolbox/lib/menu";
+import { Menu, MenuItem, IconMenu, MenuDivider} from "react-toolbox/lib/menu";
+import Tooltip from 'react-toolbox/lib/tooltip';
 import dateformat from "dateformat";
 
 import style from "./style";
 
+const TooltipButton = Tooltip(Button);
+
 const DownloadMenu = () => (
   <IconMenu icon="more_vert" position="bottomRight" flat inverse class={style.icon}>
-    <MenuItem value="download" icon='file_download' caption="Download Banner" />
+    <MenuItem value="download" icon='picture_in_picture' caption="Download Banner" />
+    <MenuItem value="download" icon='image' caption="Download Backup Image" />
+    <MenuDivider />
     <MenuItem value="download" icon='file_download' caption="Download Project" />
   </IconMenu>
 );
 
 const InfoBar = () => (
   <div class={style.infoBar}>
-    <IconButton icon="info" flat inverse class={style.icon} />
-    <IconButton icon="replay" flat inverse class={style.icon} />
+    <IconButton icon="info" tooltip="test" flat inverse class={style.icon} />
+    <IconButton icon="replay" flat inverse class={style.icon} onClick={() => {
+      console.log('refresh banner');
+      document.getElementById("frame").src += '';
+    }} />
     <DownloadMenu />
   </div>
 );
@@ -94,7 +102,7 @@ export default class Viewer extends Component {
       <div class={style.view}>
         <div class={style.subnav}>
           <div>
-            <h1>Project: {currentProject.title}</h1>
+            <h1>{currentProject.title}</h1>
           </div>
           <div class={style.liveDate}>
             <span class={style.title}>Live date:</span>
