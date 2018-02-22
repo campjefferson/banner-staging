@@ -94,7 +94,7 @@ export default class Viewer extends Component {
       <div class={style.view}>
         <div class={style.subnav}>
           <div>
-            <h1>Project: {project}</h1>
+            <h1>Project: {currentProject.title}</h1>
           </div>
           <div class={style.liveDate}>
             <span class={style.title}>Live date:</span>
