@@ -18,6 +18,7 @@ const CampaignListing = props => {
           <ul>
             {bannerNames.map((bannerName, index) => {
               const banner = project.banners[set][bannerName];
+              const bannerSize = banner.name || bannerName;
               if (index === 0 && !currentBanner) {
                 currentBanner = banner;
               }
@@ -34,7 +35,7 @@ const CampaignListing = props => {
                       });
                     }}
                   >
-                    {bannerName}
+                    {bannerSize}
                   </a>
                 </li>
               );
