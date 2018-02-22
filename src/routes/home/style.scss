@@ -121,9 +121,6 @@
   right: 8px;
 }
 
-.cardsWrap {
-}
-
 .listItem {
   margin: 0;
   padding: 0;
@@ -175,7 +172,7 @@
     font-family: OratorStd;
     text-transform: uppercase;
     padding-left: 0;
-    width: 50.6%;
+    // width: 50.6%;
     text-align: left;
 
     span {
@@ -185,12 +182,20 @@
       position: relative;
       top: -1px;
     }
+
+    &:hover {
+      background: transparent !important;
+    }
+
+    &:last-of-type {
+      padding-left: 18px;
+    }
   }
   button,
   > span {
     display: inline-block;
-    flex: 1;
-    flex-basis: auto;
+    // flex: 1;
+    // flex-basis: auto;
   }
   > span {
     height: 1;

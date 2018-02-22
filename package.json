@@ -1,18 +1,15 @@
 {
 	"name": "banner-staging",
 	"version": "1.0.0",
-	"description":
-		"A banner staging boilerplate project, to house all banners for a specific client",
+	"description": "A banner staging boilerplate project, to house all banners for a specific client",
 	"main": "index.js",
 	"scripts": {
 		"test": "eslint src && preact test",
-		"start:fetch":
-			"if-env NODE_ENV=production && npm run -s serve || npm run fetch && npm run -s dev",
+		"start:fetch": "if-env NODE_ENV=production && npm run -s serve || npm run fetch && npm run -s dev",
 		"start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
 		"build": "preact build",
 		"serve": "preact build && preact serve",
-		"production":
-			"cross-env NODE_ENV=production npm run fetch && preact build && npm run copyFiles",
+		"production": "cross-env NODE_ENV=production npm run fetch && preact build && npm run copyFiles",
 		"copyFiles": "babel-node copyFiles",
 		"fetch": "babel-node fetch",
 		"dev": "preact watch"
@@ -54,7 +51,9 @@
 			"http://cj-banner-boilerplate.netlify.com",
 			"http://media.campjefferson.ca/clients/porsche/996-classic",
 			"http://media.campjefferson.ca/clients/koodo/junesale-wontlast-50-bonus",
-			"http://media.campjefferson.ca/clients/koodo/roi-sfd-generic"
+			"http://media.campjefferson.ca/clients/koodo/roi-sfd-generic",
+			"http://media.campjefferson.ca/clients/koodo/pd-pig-0",
+			"http://media.campjefferson.ca/clients/porsche/718-sportscar-spring-v1"
 		]
 	},
 	"performance": {
