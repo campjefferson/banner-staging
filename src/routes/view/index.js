@@ -21,7 +21,6 @@ const InfoBar = () => (
   <div class={style.infoBar}>
     <IconButton icon="info" tooltip="test" flat inverse class={style.icon} />
     <IconButton icon="replay" flat inverse class={style.icon} onClick={() => {
-      console.log('refresh banner');
       document.getElementById("frame").src += '';
     }} />
     <DownloadMenu />
@@ -110,9 +109,13 @@ export default class Viewer extends Component {
           </div>
         </div>
         <div class={style.body}>
-          <IconButton
-            icon="content_copy"
+          <TooltipButton
+            icon="menu"
+            tooltipPosition="right"
+            tooltip="View banner listing"
             flat
+            floating
+            accent
             onClick={toggleDrawerActive}
             class={style.menuButton}
           />
